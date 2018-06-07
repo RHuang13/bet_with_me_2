@@ -17,7 +17,7 @@
 
       <% @follows.each do |follow| %>
       <tr>
-        <td><%= follow.participants %></td>
+        <td><%= follow.user.email %></td>
         <td><%= follow.bet %></td>
         <td><%= follow.choice %></td>
         <td>
