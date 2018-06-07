@@ -22,7 +22,7 @@
         <td><%= bet.name %></td>
         <td><%= bet.description %></td>
         <td><%= bet.bet_size %></td>
-        <td><%= bet.owner %></td>
+        <td><%= bet.game_owner.email %></td>
         <td><%= bet.results %></td>
         <td>
           <a href="/bets/<%= bet.id %>" class="btn btn-primary">Show</a>
