@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Follows
+    <a href="/follows/new" class="btn btn-lg btn-success">New Follow</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Participants</th>
+        <th>Bet</th>
+        <th>Choice</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @follows.each do |follow| %>
+      <tr>
+        <td><%= follow.participants %></td>
+        <td><%= follow.bet %></td>
+        <td><%= follow.choice %></td>
+        <td>
+          <a href="/follows/<%= follow.id %>" class="btn btn-primary">Show</a>
+          <a href="/follows/<%= follow.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_follow/<%= follow.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

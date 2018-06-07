@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @follow.errors.any? %>
+  <% @follow.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Follow #<%= @follow.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_follow/<%= @follow.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for participants -->
+      <div class="form-group">
+        <label for="participants" class="control-label">
+          Participants
+        </label>
+
+        <input type="text" id="participants" name="participants" placeholder="Participants" class="form-control" value="<%= @follow.participants %>">
+      </div>
+
+      <!-- Label and input for bet -->
+      <div class="form-group">
+        <label for="bet" class="control-label">
+          Bet
+        </label>
+
+        <input type="text" id="bet" name="bet" placeholder="Bet" class="form-control" value="<%= @follow.bet %>">
+      </div>
+
+      <!-- Label and input for choice -->
+      <div class="form-group">
+        <label for="choice" class="control-label">
+          Choice
+        </label>
+
+        <input type="text" id="choice" name="choice" placeholder="Choice" class="form-control" value="<%= @follow.choice %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Follow
+      </button>
+      or
+      <a href="/follows/<%= @follow.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
