@@ -42,7 +42,7 @@
           Choice
         </label>
 
-        <input type="text" id="choice" name="choice" placeholder="Choice" class="form-control" value="<%= @follow.choice %>">
+        <%= select_tag(:choice, options_from_collection_for_select(Choice.all, :id, :scenario, @follow.choice), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
