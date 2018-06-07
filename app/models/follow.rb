@@ -1,6 +1,11 @@
 class Follow < ApplicationRecord
   # Direct associations
 
+  belongs_to :bet_choice,
+             :class_name => "Choice",
+             :foreign_key => "choice",
+             :counter_cache => :followers_count
+
   belongs_to :game,
              :class_name => "Bet",
              :foreign_key => "bet",
