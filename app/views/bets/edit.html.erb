@@ -51,7 +51,7 @@
           Owner
         </label>
 
-        <input type="text" id="owner" name="owner" placeholder="Owner" class="form-control" value="<%= @bet.owner %>">
+        <%= select_tag(:owner, options_from_collection_for_select(User.all, :id, :email, @bet.owner), :class => "form-control") %>
       </div>
 
       <!-- Label and input for results -->
