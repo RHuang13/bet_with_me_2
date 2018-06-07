@@ -1,6 +1,9 @@
 class Bet < ApplicationRecord
   # Direct associations
 
+  has_many   :follows,
+             :dependent => :destroy
+
   has_many   :choices,
              :dependent => :destroy
 
