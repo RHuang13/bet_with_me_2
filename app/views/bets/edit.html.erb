@@ -45,14 +45,8 @@
         <input type="text" id="bet_size" name="bet_size" placeholder="Bet size" class="form-control" value="<%= @bet.bet_size %>">
       </div>
 
-      <!-- Label and input for owner -->
-      <div class="form-group">
-        <label for="owner" class="control-label">
-          Owner
-        </label>
-
-        <%= select_tag(:owner, options_from_collection_for_select(User.all, :id, :email, @bet.owner), :class => "form-control") %>
-      </div>
+      
+      
 
       <!-- Label and input for results -->
       <div class="form-group">
