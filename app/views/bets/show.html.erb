@@ -15,7 +15,13 @@
       <dd><%= @bet.bet_size %></dd>
 
       <dt>Owner</dt>
-      <dd><%= @bet.owner %></dd>
+      <dd>
+        <% if @bet.game_owner.present? %>
+          <a href="/users/<%= @bet.owner %>">
+            <%= @bet.game_owner.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Results</dt>
       <dd><%= @bet.results %></dd>

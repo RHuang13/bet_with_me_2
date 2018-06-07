@@ -22,7 +22,13 @@
         <td><%= bet.name %></td>
         <td><%= bet.description %></td>
         <td><%= bet.bet_size %></td>
-        <td><%= bet.game_owner.email %></td>
+        <td>
+          <% if bet.game_owner.present? %>
+            <a href="/users/<%= bet.game_owner.id %>">
+              <%= bet.game_owner.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= bet.results %></td>
         <td>
           <a href="/bets/<%= bet.id %>" class="btn btn-primary">Show</a>

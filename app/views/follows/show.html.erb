@@ -6,13 +6,31 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Participants</dt>
-      <dd><%= @follow.participants %></dd>
+      <dd>
+        <% if @follow.user.present? %>
+          <a href="/users/<%= @follow.participants %>">
+            <%= @follow.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Bet</dt>
-      <dd><%= @follow.bet %></dd>
+      <dd>
+        <% if @follow.game.present? %>
+          <a href="/bets/<%= @follow.bet %>">
+            <%= @follow.game.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Choice</dt>
-      <dd><%= @follow.choice %></dd>
+      <dd>
+        <% if @follow.bet_choice.present? %>
+          <a href="/choices/<%= @follow.choice %>">
+            <%= @follow.bet_choice.scenario %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

@@ -9,7 +9,13 @@
       <dd><%= @choice.scenario %></dd>
 
       <dt>Bet</dt>
-      <dd><%= @choice.bet %></dd>
+      <dd>
+        <% if @choice.game.present? %>
+          <a href="/bets/<%= @choice.bet %>">
+            <%= @choice.game.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Winner</dt>
       <dd><%= @choice.winner %></dd>

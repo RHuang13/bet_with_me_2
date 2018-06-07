@@ -18,7 +18,13 @@
       <% @choices.each do |choice| %>
       <tr>
         <td><%= choice.scenario %></td>
-        <td><%= choice.game.name %></td>
+        <td>
+          <% if choice.game.present? %>
+            <a href="/bets/<%= choice.game.id %>">
+              <%= choice.game.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= choice.winner %></td>
         <td>
           <a href="/choices/<%= choice.id %>" class="btn btn-primary">Show</a>
