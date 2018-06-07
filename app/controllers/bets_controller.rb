@@ -10,7 +10,7 @@ class BetsController < ApplicationController
   end
 
   def index
-    @bets = Bet.all
+    @bets = Bet.page(params[:page]).per(10)
 
     render("bets/index.html.erb")
   end
