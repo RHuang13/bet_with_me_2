@@ -1,0 +1,54 @@
+<!-- Validation failure messages -->
+<% if @choice.errors.any? %>
+  <% @choice.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Choice #<%= @choice.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_choice/<%= @choice.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for scenario -->
+      <div class="form-group">
+        <label for="scenario" class="control-label">
+          Scenario
+        </label>
+
+        <textarea id="scenario" name="scenario" placeholder="Scenario" class="form-control" rows="3"><%= @choice.scenario %></textarea>
+      </div>
+
+      <!-- Label and input for bet -->
+      <div class="form-group">
+        <label for="bet" class="control-label">
+          Bet
+        </label>
+
+        <input type="text" id="bet" name="bet" placeholder="Bet" class="form-control" value="<%= @choice.bet %>">
+      </div>
+
+      <!-- Label and input for winner -->
+      <div class="checkbox">
+        <label for="winner">
+          <input type="checkbox" id="winner" name="winner" value="1" <%= "checked" if @choice.winner %>>
+          Winner
+        </label>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Choice
+      </button>
+      or
+      <a href="/choices/<%= @choice.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

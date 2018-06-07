@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Choice resource:
+  # CREATE
+  get "/choices/new", :controller => "choices", :action => "new"
+  post "/create_choice", :controller => "choices", :action => "create"
+
+  # READ
+  get "/choices", :controller => "choices", :action => "index"
+  get "/choices/:id", :controller => "choices", :action => "show"
+
+  # UPDATE
+  get "/choices/:id/edit", :controller => "choices", :action => "edit"
+  post "/update_choice/:id", :controller => "choices", :action => "update"
+
+  # DELETE
+  get "/delete_choice/:id", :controller => "choices", :action => "destroy"
+  #------------------------------
+
   # Routes for the Bet resource:
   # CREATE
   get "/bets/new", :controller => "bets", :action => "new"
