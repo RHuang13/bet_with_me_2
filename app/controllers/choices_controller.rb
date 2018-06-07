@@ -1,6 +1,7 @@
 class ChoicesController < ApplicationController
   def index
-    @choices = Choice.page(params[:page]).per(10)
+    @q = Choice.ransack(params[:q])
+    @choices = @q.result(:distinct => true).includes(:game, :followers).page(params[:page]).per(10)
 
     render("choices/index.html.erb")
   end

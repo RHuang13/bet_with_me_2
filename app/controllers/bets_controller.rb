@@ -10,7 +10,8 @@ class BetsController < ApplicationController
   end
 
   def index
-    @bets = Bet.page(params[:page]).per(10)
+    @q = Bet.ransack(params[:q])
+    @bets = @q.result(:distinct => true).includes(:game_owner, :choices, :follows).page(params[:page]).per(10)
 
     render("bets/index.html.erb")
   end
