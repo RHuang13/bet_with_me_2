@@ -33,7 +33,7 @@
           Bet
         </label>
 
-        <input type="text" id="bet" name="bet" placeholder="Bet" class="form-control" value="<%= @choice.bet %>">
+        <%= select_tag(:bet, options_from_collection_for_select(Bet.all, :id, :name, @choice.bet), :class => "form-control") %>
       </div>
 
       <!-- Label and input for winner -->
