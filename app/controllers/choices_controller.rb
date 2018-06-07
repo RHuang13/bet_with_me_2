@@ -6,6 +6,7 @@ class ChoicesController < ApplicationController
   end
 
   def show
+    @follow = Follow.new
     @choice = Choice.find(params[:id])
 
     render("choices/show.html.erb")

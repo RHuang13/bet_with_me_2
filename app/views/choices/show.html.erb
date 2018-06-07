@@ -57,6 +57,38 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_follow" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for participants -->
+      <input type="hidden" name="participants" value="<%= current_user.id %>">
+
+      <!-- Label and input for bet -->
+      <div class="form-group">
+        <label for="bet" class="control-label">
+          Bet
+        </label>
+
+        <%= select_tag(:bet, options_from_collection_for_select(Bet.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for choice -->
+      <div class="form-group">
+        <label for="choice" class="control-label">
+          Choice
+        </label>
+
+        <%= select_tag(:choice, options_from_collection_for_select(Choice.all, :id, :scenario), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Follow
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

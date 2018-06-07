@@ -16,6 +16,8 @@ class BetsController < ApplicationController
   end
 
   def show
+    @follow = Follow.new
+    @choice = Choice.new
     @bet = Bet.find(params[:id])
 
     render("bets/show.html.erb")

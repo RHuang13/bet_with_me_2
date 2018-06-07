@@ -65,6 +65,43 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_choice" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for scenario -->
+      <div class="form-group">
+        <label for="scenario" class="control-label">
+          Scenario
+        </label>
+
+        <textarea id="scenario" name="scenario" placeholder="Scenario" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Label and input for bet -->
+      <div class="form-group">
+        <label for="bet" class="control-label">
+          Bet
+        </label>
+
+        <%= select_tag(:bet, options_from_collection_for_select(Bet.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for winner -->
+      <div class="checkbox">
+        <label for="winner">
+          <input type="checkbox" id="winner" name="winner" value="1" <%= "checked" if @choice.winner %>>
+          Winner
+        </label>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Choice
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -96,6 +133,38 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_follow" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for participants -->
+      <input type="hidden" name="participants" value="<%= current_user.id %>">
+
+      <!-- Label and input for bet -->
+      <div class="form-group">
+        <label for="bet" class="control-label">
+          Bet
+        </label>
+
+        <%= select_tag(:bet, options_from_collection_for_select(Bet.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for choice -->
+      <div class="form-group">
+        <label for="choice" class="control-label">
+          Choice
+        </label>
+
+        <%= select_tag(:choice, options_from_collection_for_select(Choice.all, :id, :scenario), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Follow
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
