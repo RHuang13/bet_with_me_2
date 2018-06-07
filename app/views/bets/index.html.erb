@@ -26,8 +26,11 @@
         <td><%= bet.results %></td>
         <td>
           <a href="/bets/<%= bet.id %>" class="btn btn-primary">Show</a>
-          <a href="/bets/<%= bet.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_bet/<%= bet.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == bet.game_owner %>
+            <a href="/bets/<%= bet.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_bet/<%= bet.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

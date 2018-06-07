@@ -26,12 +26,14 @@
       <a href="/bets" class="btn btn-primary">
         Back
       </a>
-      <a href="/bets/<%= @bet.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_bet/<%= @bet.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @bet.game_owner %>
+        <a href="/bets/<%= @bet.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_bet/<%= @bet.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
